@@ -1,0 +1,100 @@
+{
+  "oas": {
+    "components": {
+      "securitySchemes": {
+        "jwtAuth": {
+          "bearerFormat": "JWT",
+          "scheme": "bearer",
+          "type": "http"
+        }
+      }
+    },
+    "info": {
+      "title": "Bar",
+      "version": "1.0.0"
+    },
+    "openapi": "3.0.3",
+    "paths": {},
+    "security": [
+      {
+        "jwtAuth": []
+      }
+    ],
+    "servers": [
+      {
+        "url": "http://tyk-gateway.localhost:8080/bar/"
+      }
+    ],
+    "x-tyk-api-gateway": {
+      "info": {
+        "dbId": "6721001c2e931a0001090c4b",
+        "id": "09fc06a6574c4fe97d057c5b5c5a08ce",
+        "name": "Bar",
+        "orgId": "5e9d9544a1dcd60001d0ed20",
+        "state": {
+          "active": true
+        }
+      },
+      "middleware": {
+        "global": {
+          "contextVariables": {
+            "enabled": true
+          },
+          "pluginConfig": {
+            "driver": "goplugin"
+          },
+          "postAuthenticationPlugins": [
+            {
+              "enabled": false,
+              "functionName": "",
+              "path": ""
+            }
+          ],
+          "postPlugins": [
+            {
+              "enabled": true,
+              "functionName": "UpstreamOAuth",
+              "path": "plugins/go/upstreamoauth/upstream-oauth.so"
+            }
+          ],
+          "trafficLogs": {
+            "enabled": true
+          }
+        }
+      },
+      "server": {
+        "authentication": {
+          "enabled": false,
+          "securitySchemes": {
+            "jwtAuth": {
+              "defaultPolicies": [
+                "671f5a68b9585c0001d13801"
+              ],
+              "enabled": true,
+              "header": {
+                "enabled": true,
+                "name": "Authorization"
+              },
+              "identityBaseField": "sub",
+              "policyFieldName": "pol",
+              "signingMethod": "hmac",
+              "source": "c2VjcmV0"
+            }
+          }
+        },
+        "listenPath": {
+          "strip": true,
+          "value": "/bar/"
+        }
+      },
+      "upstream": {
+        "url": "http://httpbin.org/"
+      }
+    }
+  },
+  "hook_references": [],
+  "is_site": false,
+  "sort_by": 0,
+  "user_group_owners": [],
+  "user_owners": []
+}
