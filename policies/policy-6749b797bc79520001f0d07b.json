@@ -1,0 +1,75 @@
+{
+  "_id": "6749b797bc79520001f0d07b",
+  "id": "6749b797bc79520001f0d07b",
+  "name": "My API Plan",
+  "org_id": "5e9d9544a1dcd60001d0ed20",
+  "rate": 0,
+  "per": 60,
+  "quota_max": -1,
+  "quota_renewal_rate": -1,
+  "throttle_interval": -1,
+  "throttle_retry_limit": -1,
+  "max_query_depth": -1,
+  "access_rights": {
+    "cc352286672f47a16310acfb67ff9cb8": {
+      "api_name": "Foo",
+      "api_id": "cc352286672f47a16310acfb67ff9cb8",
+      "versions": [
+        ""
+      ],
+      "allowed_urls": [
+        {
+          "url": "/headers",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "url": "/get",
+          "methods": [
+            "GET"
+          ]
+        }
+      ],
+      "restricted_types": [],
+      "allowed_types": [],
+      "limit": {
+        "rate": 0,
+        "per": 0,
+        "throttle_interval": 0,
+        "throttle_retry_limit": 0,
+        "max_query_depth": 0,
+        "quota_max": 0,
+        "quota_renews": 0,
+        "quota_remaining": 0,
+        "quota_renewal_rate": 0
+      },
+      "field_access_rights": [],
+      "disable_introspection": false,
+      "allowance_scope": ""
+    }
+  },
+  "hmac_enabled": false,
+  "enable_http_signature_validation": false,
+  "active": true,
+  "is_inactive": false,
+  "tags": [],
+  "key_expires_in": 0,
+  "partitions": {
+    "quota": true,
+    "rate_limit": true,
+    "complexity": false,
+    "acl": false,
+    "per_api": false
+  },
+  "last_updated": "1732884375",
+  "meta_data": {},
+  "graphql_access_rights": null,
+  "smoothing": {
+    "enabled": false,
+    "threshold": 500,
+    "trigger": 0.8,
+    "step": 100,
+    "delay": 30
+  }
+}
