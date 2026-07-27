@@ -6,7 +6,7 @@
 # so the next dump.sh + sync run starts from a known-empty state.
 set -euo pipefail
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 
 for dir in apis policies assets; do
   rm -rf "${dir}"

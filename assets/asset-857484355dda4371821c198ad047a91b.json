@@ -1,0 +1,74 @@
+{
+  "_id": "6a67365ae64efd000136fbb5",
+  "id": "857484355dda4371821c198ad047a91b",
+  "name": "Edenred — JWT Auth (Keycloak) Baseline",
+  "org_id": "68f8efa116098c000109f416",
+  "description": "Blueprint for new Tyk OAS APIs secured with JWT against the Edenred Keycloak realm. Subject-identity claim is preconfigured; set the upstream URL and listen path when creating an API from this template. JWKS and scope-to-policy mapping are intentionally left out — populate them via the Identity Provider Registry (either through a DCR approval in the Portal, or directly via the Dashboard API's /api/clientidps) rather than hardcoding them here.",
+  "kind": "oas-template",
+  "data": {
+    "openapi": "3.0.3",
+    "info": {
+      "title": "New API from Edenred JWT Template",
+      "version": "1.0.0"
+    },
+    "paths": {},
+    "components": {
+      "securitySchemes": {
+        "jwtAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    },
+    "security": [
+      {
+        "jwtAuth": []
+      }
+    ],
+    "x-tyk-api-gateway": {
+      "info": {
+        "name": "New API from Edenred JWT Template",
+        "state": {
+          "active": false
+        }
+      },
+      "upstream": {
+        "url": "https://REPLACE-ME.example.com"
+      },
+      "server": {
+        "listenPath": {
+          "value": "/replace-me/",
+          "strip": true
+        },
+        "detailedTracing": {
+          "enabled": true
+        },
+        "authentication": {
+          "enabled": true,
+          "securityScheme": {
+            "jwtAuth": {
+              "enabled": true
+            }
+          },
+          "securitySchemes": {
+            "jwtAuth": {
+              "enabled": true,
+              "header": {
+                "enabled": true,
+                "name": "Authorization"
+              },
+              "signingMethod": "rsa",
+              "skipKid": true,
+              "subjectClaims": [
+                "client_id"
+              ],
+              "identityBaseField": "client_id"
+            }
+          }
+        }
+      }
+    }
+  },
+  "last_updated": "2026-07-27T10:43:38.125Z"
+}

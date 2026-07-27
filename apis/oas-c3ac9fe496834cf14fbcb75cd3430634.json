@@ -1,0 +1,51 @@
+{
+  "oas": {
+    "components": {},
+    "info": {
+      "title": "Foo",
+      "version": "1.0.0"
+    },
+    "openapi": "3.0.3",
+    "paths": {},
+    "servers": [
+      {
+        "url": "/foo"
+      }
+    ],
+    "x-tyk-api-gateway": {
+      "info": {
+        "dbId": "6a67399fe64efd000136fbb6",
+        "id": "c3ac9fe496834cf14fbcb75cd3430634",
+        "name": "Foo",
+        "orgId": "68f8efa116098c000109f416",
+        "state": {
+          "active": true
+        }
+      },
+      "middleware": {
+        "global": {
+          "contextVariables": {
+            "enabled": true
+          },
+          "trafficLogs": {
+            "enabled": true
+          }
+        }
+      },
+      "server": {
+        "listenPath": {
+          "strip": true,
+          "value": "/foo/"
+        }
+      },
+      "upstream": {
+        "url": "http://httpbingo.org/"
+      }
+    }
+  },
+  "hook_references": [],
+  "is_site": false,
+  "sort_by": 0,
+  "user_group_owners": [],
+  "user_owners": []
+}

@@ -9,7 +9,7 @@
 # committed to git.
 set -euo pipefail
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 
 if [ -f .env ]; then
   set -a
@@ -19,7 +19,7 @@ fi
 
 : "${TYK_DASHBOARD_URL:?Set TYK_DASHBOARD_URL in .env or the environment}"
 : "${TYK_DASHBOARD_SECRET:?Set TYK_DASHBOARD_SECRET in .env or the environment}"
-TYK_SYNC_VERSION="${TYK_SYNC_VERSION:-2.2.0}"
+TYK_SYNC_VERSION="${TYK_SYNC_VERSION:-v2.2.0}"
 
 DUMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$DUMP_DIR"' EXIT
