@@ -1,0 +1,78 @@
+{
+  "_id": "6a6877f7e64efd000136fbc9",
+  "id": "edenred-api-write",
+  "name": "Edenred - api:write",
+  "org_id": "68f8efa116098c000109f416",
+  "rate": 0,
+  "per": 0,
+  "quota_max": 0,
+  "quota_renewal_rate": 0,
+  "throttle_interval": 0,
+  "throttle_retry_limit": 0,
+  "max_query_depth": 0,
+  "access_rights": {
+    "edenred-demo-api": {
+      "api_name": "Edenred Demo API",
+      "api_id": "edenred-demo-api",
+      "versions": [
+        "Default"
+      ],
+      "allowed_urls": [
+        {
+          "url": "/get",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "url": "/headers",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "url": "/status/.*",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "url": "/post",
+          "methods": [
+            "POST"
+          ]
+        }
+      ],
+      "restricted_types": [],
+      "allowed_types": [],
+      "limit": null,
+      "field_access_rights": [],
+      "disable_introspection": false,
+      "allowance_scope": ""
+    }
+  },
+  "hmac_enabled": false,
+  "enable_http_signature_validation": false,
+  "active": true,
+  "is_inactive": false,
+  "tags": [
+    "edenred",
+    "jwt-scope-mapping",
+    "read-write",
+    "portal-product"
+  ],
+  "key_expires_in": 0,
+  "post_expiry_action": "",
+  "post_expiry_grace_period": 0,
+  "partitions": {
+    "quota": false,
+    "rate_limit": false,
+    "complexity": false,
+    "acl": true,
+    "per_api": false
+  },
+  "last_updated": "1785231574",
+  "meta_data": {},
+  "graphql_access_rights": null,
+  "smoothing": null
+}
