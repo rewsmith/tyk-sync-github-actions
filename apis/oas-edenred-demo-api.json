@@ -1,0 +1,147 @@
+{
+  "oas": {
+    "components": {
+      "securitySchemes": {
+        "jwtAuth": {
+          "bearerFormat": "JWT",
+          "scheme": "bearer",
+          "type": "http"
+        }
+      }
+    },
+    "info": {
+      "description": "JWT-secured proxy to httpbingo, used to demonstrate authentication (Keycloak JWT), advanced scope-to-policy claim mapping via the Identity Provider Registry (api:read / api:write, populated by DCR — see portal/dcr-keycloak.md), rate limiting, and OpenTelemetry tracing.",
+      "title": "Edenred Demo API",
+      "version": "1.0.0"
+    },
+    "openapi": "3.0.3",
+    "paths": {
+      "/get": {
+        "get": {
+          "operationId": "httpbingoGet",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "summary": "Echo GET request — reachable by api:read and api:write"
+        }
+      },
+      "/headers": {
+        "get": {
+          "operationId": "httpbingoHeaders",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "summary": "Echo request headers — reachable by api:read and api:write"
+        }
+      },
+      "/post": {
+        "post": {
+          "operationId": "httpbingoPost",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "summary": "Echo POST body — reachable only by api:write (blocked for api:read)"
+        }
+      },
+      "/status/{code}": {
+        "get": {
+          "operationId": "httpbingoStatus",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "code",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "summary": "Return arbitrary status code — reachable by api:read and api:write"
+        }
+      }
+    },
+    "security": [
+      {
+        "jwtAuth": []
+      }
+    ],
+    "servers": [
+      {
+        "url": "/edenred"
+      },
+      {
+        "url": "http://edenred-gw-dp1.local:8080/edenred"
+      }
+    ],
+    "x-tyk-api-gateway": {
+      "info": {
+        "dbId": "6a69b161e64efd000136fbcf",
+        "id": "edenred-demo-api",
+        "name": "Edenred Demo API",
+        "orgId": "68f8efa116098c000109f416",
+        "state": {
+          "active": true
+        }
+      },
+      "middleware": {
+        "global": {
+          "contextVariables": {
+            "enabled": true
+          },
+          "trafficLogs": {
+            "enabled": true
+          }
+        }
+      },
+      "server": {
+        "authentication": {
+          "enabled": true,
+          "securitySchemes": {
+            "jwtAuth": {
+              "enabled": true,
+              "header": {
+                "enabled": true,
+                "name": "Authorization"
+              },
+              "identityBaseField": "client_id",
+              "jtiValidation": {
+                "enabled": false
+              },
+              "signingMethod": "rsa",
+              "skipKid": true,
+              "subjectClaims": [
+                "client_id"
+              ]
+            }
+          }
+        },
+        "detailedTracing": {
+          "enabled": true
+        },
+        "listenPath": {
+          "strip": true,
+          "value": "/edenred/"
+        }
+      },
+      "upstream": {
+        "url": "https://httpbingo.org"
+      }
+    }
+  },
+  "hook_references": [],
+  "is_site": false,
+  "sort_by": 0,
+  "user_group_owners": [],
+  "user_owners": []
+}
